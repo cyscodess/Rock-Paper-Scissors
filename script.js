@@ -1,25 +1,108 @@
+let playerScore = document.getElementById("player-score")
+let computerScore = document.getElementById("computer-score")
+let modal = document.getElementById("modal")
+let result = document.getElementById("result")
+let rock = document.getElementById("rock")
+let paper = document.getElementById("paper")
+let scissors = document.getElementById("scissors")
+let pScoreCount = 0
+let cScoreCount = 0
+
+playerScore.innerText = 0
+computerScore.innerText = 0
+
+document.getElementById("choices").addEventListener('click', getPlayerChoice)
+document.getElementById("play-again").addEventListener('click', resetGame)
+
+function showModal() {
+    modal.style.display = "block"
+}
+
+function getPlayerChoice(event) {
+    let choice = event.target.id
+    if (choice) {
+        getComputerChoice()
+        stylePlayerChoice(event)
+    }
+    renderScore(choice, getComputerChoice(choice))
+}
+
 function getComputerChoice() {
     let generator = Math.floor(Math.random() * 3 + 1)
-    let choice = generator
+    let choice = ""
+    let choiceDisplay = ""
     if (generator === 1) {
         choice = "rock"
+        choiceDisplay = "✊"
     } else if (generator === 2) {
         choice = "paper"
-    } else {
+        choiceDisplay = "✋"
+    } else if (generator === 3) {
         choice = "scissors"
+        choiceDisplay = "✌"
     }
+    document.getElementById("computer-choice").innerText = choiceDisplay
     return choice
 }
 
-// document.getElementById("start-game").addEventListener("click", getPlayerChoice)
+function renderScore(playerChoice, computerChoice) {
+    if ((playerChoice === "rock" && computerChoice === "rock") || 
+    (playerChoice === "paper" && computerChoice === "paper") || 
+    (playerChoice === "scissors" && computerChoice === "scissors")) {
+        result.innerText = "Draw"
+    } else if ((playerChoice === "rock" && computerChoice === "scissors") || 
+    (playerChoice === "paper" && computerChoice === "rock") || 
+    (playerChoice === "scissors" && computerChoice === "paper")) {
+        result.innerText = "You Win"
+        pScoreCount++
+    } if ((playerChoice === "rock" && computerChoice === "paper") || 
+    (playerChoice === "paper" && computerChoice === "scissors") || 
+    (playerChoice === "scissors" && computerChoice === "rock")) {
+        result.innerText = "You Lose"
+        cScoreCount++
+    }
 
+    if (pScoreCount === 5 || cScoreCount === 5) {
+        if (pScoreCount === 5) {
+            document.getElementById("modal-text").innerText = "You Won!"
+        } else if (cScoreCount === 5) {
+            document.getElementById("modal-text").innerText = "You Lost"
+        }
+        showModal()
+    }
 
-
-function getPlayerChoice() {
-    let choice = prompt("Rock, Paper, or Scissors?").value
-    console.log(choice.toLowerCase())
+    playerScore.innerText = pScoreCount 
+    computerScore.innerText = cScoreCount
 }
 
-function startGame(playerSelection, computerSelection) {
-    
+function resetGame() {
+    modal.style.display = "none"
+
+    pScoreCount = 0
+    cScoreCount = 0
+    playerScore.innerText = 0
+    computerScore.innerText = 0
+
+    rock.style.filter = "grayscale(1)"
+    paper.style.filter = "grayscale(1)"
+    scissors.style.filter = "grayscale(1)"
+
+    result.innerText = "Good Luck!"
+    document.getElementById("computer-choice").innerText = ""
+}
+
+function stylePlayerChoice(event) {
+    if (event.target.id === "rock") {
+        rock.style.filter = "grayscale(0)"
+        paper.style.filter = "grayscale(1)"
+        scissors.style.filter = "grayscale(1)"
+    } else if (event.target.id === "paper") {
+        rock.style.filter = "grayscale(1)"
+        paper.style.filter = "grayscale(0)"
+        scissors.style.filter = "grayscale(1)"
+    } else if (event.target.id === "scissors") {
+        rock.style.filter = "grayscale(1)"
+        paper.style.filter = "grayscale(1)"
+        scissors.style.filter = "grayscale(0)"
+    } 
 }

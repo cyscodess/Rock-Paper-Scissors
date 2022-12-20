@@ -5,34 +5,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <!-- STYLESHEET -->
     <link rel="stylesheet" href="style.css">
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Rock, Paper, Scissors</h1>
-    </header>
-    <main>
-        <div class="container">
-        
+    <div class="container">
+        <header>
+            <h1>Rock Paper Scissors</h1>
+        </header>
+        <main>
+                        
             <!-- <button id="start-game">Start</button> -->
-    
-            <div class="selections">
-                <h2>You chose:</h2>
-                <h3 id="player-choice"></h3>
-                <h2>Computer chose:</h2>
-                <h3 id="computer-choice"></h3>
+            
+            <div class="scores">
+                <div>
+                    <h3>🧑</h3>
+                    <span id="player-score"></span>
+                </div>
+                <div>
+                    <h3>🤖</h3>
+                    <span id="computer-score"></span>
+                </div>
             </div>
-    
-            <div id="choices">
-                <button id="rock">✊</button>
-                <button id="paper">✋</button>
-                <button id="scissors">✌</button>
+            <div class="result-container">
+                <h2 class="result" id="result">Good Luck!</h2>
             </div>
-    
-            <h2 id="result"></h2>
-        </div>
-    </main>
+            <div class="game-content">
+                <h2>You:</h2>
 
+                <div class="choices" id="choices">
+                    <button id="rock">✊</button>
+                    <button id="paper">✋</button>
+                    <button id="scissors">✌</button>
+                </div>
+
+                <h2>Computer:</h2>
+                <h3 class="computer-choice" id="computer-choice"></h3>
+            </div>
+            <div class="modal" id="modal">
+                <h2 id="modal-text">You</h2>
+                <button id="play-again">Play Again</button>
+            </div>     
+        </main>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
