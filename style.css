@@ -28,7 +28,7 @@ body {
 .container {
     background-color: var(--clr-base);
     min-width: 550px;
-    width: 70vw;
+    width: 50vw;
     height: 75vh;
     position: absolute;
     top:0;
