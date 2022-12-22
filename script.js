@@ -46,9 +46,7 @@ function getComputerChoice() {
 }
 
 function renderScore(playerChoice, computerChoice) {
-    if ((playerChoice === "rock" && computerChoice === "rock") || 
-    (playerChoice === "paper" && computerChoice === "paper") || 
-    (playerChoice === "scissors" && computerChoice === "scissors")) {
+    if (playerChoice === computerChoice) {
         result.innerText = "Draw"
     } else if ((playerChoice === "rock" && computerChoice === "scissors") || 
     (playerChoice === "paper" && computerChoice === "rock") || 
