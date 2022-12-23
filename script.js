@@ -46,16 +46,18 @@ function getComputerChoice() {
 }
 
 function renderScore(playerChoice, computerChoice) {
+    const rules = {
+        "scissors": "paper",
+        "rock": "scissors",
+        "paper": "rock"
+    }
+
     if (playerChoice === computerChoice) {
         result.innerText = "Draw"
-    } else if ((playerChoice === "rock" && computerChoice === "scissors") || 
-    (playerChoice === "paper" && computerChoice === "rock") || 
-    (playerChoice === "scissors" && computerChoice === "paper")) {
+    } else if (rules[playerChoice] === computerChoice) {
         result.innerText = "You Win"
         pScoreCount++
-    } if ((playerChoice === "rock" && computerChoice === "paper") || 
-    (playerChoice === "paper" && computerChoice === "scissors") || 
-    (playerChoice === "scissors" && computerChoice === "rock")) {
+    } else {
         result.innerText = "You Lose"
         cScoreCount++
     }
