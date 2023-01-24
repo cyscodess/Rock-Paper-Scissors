@@ -52,6 +52,25 @@ main {
     margin-top: 1rem;
 }
 
+footer {
+    width: 100%;
+    margin-bottom: 1rem;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    color: #ccff01;
+    font-size: 1.2rem;
+}
+
+a {
+    color: #ccff01;
+}
+
+a:hover,
+a:active {
+    color: #fff;
+}
+
 .game-content {
     margin-bottom: 2rem;
 }
